@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('translations', function (Blueprint $table) {
             $table->id();
+            $table->string('key')->comment('翻訳キー');
             $table->timestamps();
+
+            $table->unique('key');
         });
     }
 
