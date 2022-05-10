@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('translation_items', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('translation_id')->comment('翻訳ID');
-            $table->string('locale')->comment('言語'); //2文字のコード
-            $table->text('text')->nullable()->comment('テキスト');
-            $table->timestamps();
+      Schema::create('translation_items', function (Blueprint $table) {
+              $table->id();
+              $table->unsignedBigInteger('translation_id')->comment('翻訳ID');
+              $table->string('locale')->comment('言語'); // 2文字のコード
+              $table->text('text')->nullable()->comment('テキスト');
+              $table->timestamps();
 
-            $table->unique(['translation_id','locale']);
-            $table->foreign('translation_id')->references('id')->on(translations)->onDelete('cascade');
-        });
+              $table->unique(['translation_id', 'locale']);
+              $table->foreign('translation_id')->references('id')->on('translations')->onDelete('cascade');
+          });
     }
 
     /**

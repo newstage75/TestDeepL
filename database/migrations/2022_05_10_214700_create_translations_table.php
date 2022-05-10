@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('translations', function (Blueprint $table) {
-            $table->id();
-            $table->string('key')->comment('翻訳キー');
-            $table->timestamps();
+      Schema::create('translations', function (Blueprint $table) {
+          $table->id();
+          $table->string('key')->comment('翻訳キー');
+          $table->timestamps();
 
-            $table->unique('key');
-        });
+          $table->unique('key');
+      });
     }
 
     /**

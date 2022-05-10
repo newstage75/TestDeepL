@@ -17,13 +17,14 @@ class Translation extends Model
 
     // Relationship
     public function items()
-    return $this->hasMany(TranslationItem::class, 'translation_id', 'id');
-
+    {
+      return $this->hasMany(TranslationItem::class, 'translation_id', 'id');
+    }
     // Others
     public static function getConfigData($locale) //翻訳データをkey=>value形式にして取得
     {
       $translations = Translation::whereHas('items', function($query) use($locale){
-          $query->where('locale', $locale)
+          $query->where('locale', $locale);
       })
       ->get();
       return $translations->map(function($translation) use($locale){
@@ -34,6 +35,6 @@ class Translation extends Model
             ->text
         ];
       })
-      ->pluck('text', 'key')
+      ->pluck('text', 'key');
     }
 }
