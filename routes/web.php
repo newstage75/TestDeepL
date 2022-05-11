@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('translation', function(){
+
+    echo trans('deepl.to_password_reminder');
+
+});
