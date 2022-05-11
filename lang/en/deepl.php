@@ -2,4 +2,4 @@
 
 use App\Models\Translation;
 
-return Translation::getConfigData('en')
+return Translation::getConfigData('en');
