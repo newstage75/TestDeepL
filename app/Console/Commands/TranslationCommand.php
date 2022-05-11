@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Http;
 class TranslationCommand extends Command
 {
     private $from_locale =''; //翻訳元の言語
-    pricate $to_locales = []; //翻訳先の言語
+    private $to_locales = []; //翻訳先の言語
 
     /**
      * The name and signature of the console command.
@@ -34,15 +34,15 @@ class TranslationCommand extends Command
      */
     public function handle()
     {
-        $all_locales = Translation::LCALES;
+        $all_locales = Translation::LOCALES;
         $this->from_locale = $this->option('from');
-        $this->to_locales = Arr::except($all_locales, [$his->form_locale]); //元言語を除外した言語
+        $this->to_locales = Arr::except($all_locales, [$this->from_locale]); //元言語を除外した言語
 
         if(!in_array($this->from_locale, $all_locales, true)){ //言語がサポーロされてない場合
           return Command::INVALID;
       }
 
-      $translation = $hits->getTranslation();
+      $translation = $this->getTranslation();
 
       if(is_null($translation)) {
 
